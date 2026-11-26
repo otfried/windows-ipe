@@ -10,6 +10,7 @@ all:
 	tar xzvf ../pkg/freetype-*.tar.gz
 	mv freetype-* freetype
 	cd freetype && \
+		export PKG_CONFIG_LIBDIR=$(IPEDEPS)/lib/pkgconfig && \
 		./configure --host=$(IPECROSS)-w64-mingw32 --build=x86_64-linux \
 		--prefix=$(IPEDEPS) --disable-static \
 		--with-zlib=yes --with-png=no --with-harfbuzz=no \
@@ -17,6 +18,7 @@ all:
 		make && \
 		make install
 	rm -fr $(IPEDEPS)/share
+	rm -fr $(IPEDEPS)/lib/libfreetype.la
 
 clean:
 	rm -fr freetype

@@ -14,7 +14,7 @@ all:
 		export PKG_CONFIG_LIBDIR=$(IPEDEPS)/lib/pkgconfig && \
 		meson setup --cross-file ../../meson-cross-x86_64-w64-mingw32.txt \
 			--buildtype=release --prefix=$(IPEDEPS) \
-			-Dfontconfig=disabled -Dglib=disabled -Ddwrite=disabled \
+			-Dfontconfig=disabled -Dglib=disabled \
 			-Dfreetype=enabled -Dpng=enabled \
 			build && \
 		cd build && meson compile && meson install

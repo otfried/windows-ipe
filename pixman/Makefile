@@ -11,14 +11,10 @@ all:
 	mv pixman-*[0-9] pixman
 	cd pixman && \
 		export PKG_CONFIG_LIBDIR=$(IPEDEPS)/lib/pkgconfig && \
-		./configure --prefix=$(IPEDEPS) \
-			--enable-shared --disable-static \
-			--host=$(IPECROSS)-w64-mingw32 --build=i686-linux \
-			CPPFLAGS="-I/sw/mingwlibs-$IPECROSS/include" \
-			LDFLAGS="-L/sw/mingwlibs-$IPECROSS/lib" && \
-		make && \
-		make install
-	rm $(IPEDEPS)/lib/libpixman*.la
+		meson setup --cross-file ../../meson-cross-x86_64-w64-mingw32.txt \
+			--buildtype=release --prefix=$(IPEDEPS) \
+			build && \
+		cd build && meson compile && meson install
 	rm -fr $(IPEDEPS)/share
 
 clean:

@@ -21,14 +21,15 @@ Then compile all libraries one by one:
 ```
 make download
 make setup
-make libpng
-make freetype
-make pixman
-make cairo
+make zlib
 make lua
 make spiro
 make qhull
 make gsl
+make libpng
+make freetype
+make pixman
+make cairo
 ```
 
 Archive the libraries and store them safely.
