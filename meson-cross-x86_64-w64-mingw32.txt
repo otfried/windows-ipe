@@ -12,5 +12,5 @@ cpu_family = 'x86_64'
 cpu = 'x86_64'
 endian = 'little'
 
-[properties]
-c_link_args = '-lssp'
+[built-in options]
+c_link_args = ['-lssp']

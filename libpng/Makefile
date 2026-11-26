@@ -21,7 +21,9 @@ all:
 	install -m 0755 libpng/.libs/libpng16.dll.a $(IPEDEPS)/lib
 	cd libpng && install -m 0644 png.h pngconf.h pnglibconf.h $(IPEDEPS)/include
 	install -m 0644 libpng/libpng16.pc $(IPEDEPS)/lib/pkgconfig
+	ln -sf libpng16.pc $(IPEDEPS)/lib/pkgconfig/libpng.pc
 	sed -i '/^Requires.private:/d' $(IPEDEPS)/lib/pkgconfig/libpng16.pc
+	sed -i 's|^includedir=.*|includedir=$${prefix}/include|' $(IPEDEPS)/lib/pkgconfig/libpng16.pc
 
 clean:
 	rm -fr libpng
