@@ -19,7 +19,6 @@ export IPECROSS=x86_64
 
 Then compile all libraries one by one:
 ```
-make download
 make setup
 make zlib
 make lua
